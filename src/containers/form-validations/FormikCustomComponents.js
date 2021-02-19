@@ -312,9 +312,9 @@ class FormikCustomComponents extends Component {
                       </Label>
                       <FormikDatePicker
                         name="date"
-                        value={values.date}
-                        onChange={setFieldValue}
-                        onBlur={setFieldTouched}
+                        // value={values.date}
+                        // onChange={setFieldValue}
+                        // onBlur={setFieldTouched}
                       />
                       {errors.date && touched.date ? (
                         <div className="invalid-feedback d-block">

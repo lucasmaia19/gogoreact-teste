@@ -25,7 +25,7 @@ const data = [{
       },
       {
         icon: "simple-icon-doc",
-        label: "Atividade",
+        label: "form-components.atividade",
         to: "/app/dashboards/atividade"
       }
     ]

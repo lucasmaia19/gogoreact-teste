@@ -61,13 +61,13 @@ class DatePickerExamples extends Component {
                 <IntlMessages id="form-components.date-picker" />
               </CardTitle>
               <label>
-                <IntlMessages id="form-components.date" />
+                <IntlMessages id="form-components.nome" />
               </label>
               <div className="mb-5">
                 <DatePicker
                   selected={this.state.startDate}
                   onChange={this.handleChangeDate}
-                  placeholderText={messages["forms.date"]}/>
+                  placeholderText={messages["maia"]}/>
               </div>
               <label>
                 <IntlMessages id="form-components.date-range" />

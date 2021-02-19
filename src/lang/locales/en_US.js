@@ -496,6 +496,14 @@ module.exports = {
 
 
   /* 07.11.Form Components */
+  "form-components.cadastro-atividade": "Cadastro Atividade",
+  "form-components.nome": "Nome",
+  "form-components.enunciado": "Enunciado",
+  "form-components.data": "Data",
+  "form-components.nota": "Nota", 
+  "form-components.salvar": "Salvar", 
+  "form-components.atividade": "Atividade", 
+  "form-components.estado": "Estado(true,false)", 
   "form-components.custom-inputs": "Custom Inputs",
   "form-components.checkboxes": "Checkboxes",
   "form-components.radios": "Radios",
