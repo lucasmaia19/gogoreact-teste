@@ -61,7 +61,7 @@ class DatePickerExamples extends Component {
                 <IntlMessages id="form-components.date-picker" />
               </CardTitle>
               <label>
-                <IntlMessages id="form-components.nome" />
+                <IntlMessages id="Lucas" />
               </label>
               <div className="mb-5">
                 <DatePicker
