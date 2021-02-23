@@ -46,7 +46,8 @@
     "redux-saga": "^1.0.2",
     "sortablejs": "^1.6.1",
     "video.js": "^7.6.0",
-    "yup": "^0.27.0"
+    "yup": "^0.27.0",
+    "react-hook-form": "^4.4.6"
   },
   "scripts": {
     "start": "react-scripts start",
