@@ -285,7 +285,7 @@ export default class TablesUi extends Component {
         <Row>
           <Colxx xxs="12">
             <h3 className="mb-4">
-              <IntlMessages id="table.react-tables" />
+              <IntlMessages id="Lucas" />
             </h3>
           </Colxx>
 

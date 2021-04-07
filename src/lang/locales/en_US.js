@@ -503,6 +503,7 @@ module.exports = {
   "form-components.nota": "Nota", 
   "form-components.salvar": "Salvar", 
   "form-components.atividade": "Atividade", 
+  "form-components.listarAtividade": "Listar Atividade", 
   "form-components.estado": "Estado(true,false)", 
   "form-components.custom-inputs": "Custom Inputs",
   "form-components.checkboxes": "Checkboxes",

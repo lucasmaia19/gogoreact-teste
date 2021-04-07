@@ -27,7 +27,14 @@ const data = [{
         icon: "simple-icon-doc",
         label: "form-components.atividade",
         to: "/app/dashboards/atividade"
+      },
+
+      {
+        icon: "simple-icon-list",
+        label: "form-components.listarAtividade",
+        to: "/app/dashboards/listarAtividade"
       }
+
     ]
   },
   {

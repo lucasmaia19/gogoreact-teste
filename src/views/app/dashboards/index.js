@@ -1,8 +1,13 @@
 import React, { Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
+
 const Atividade = React.lazy(() =>
-  import(/* webpackChunkName: "dashboard-default" */ './atividade')
+import(/* webpackChunkName: "dashboard-default" */ './atividade')
+);
+
+const ListarAtividade = React.lazy(() =>
+  import(/* webpackChunkName: "dashboard-default" */ './listarAtividade')
 );
 
 const DashboardDefault = React.lazy(() =>
@@ -22,9 +27,14 @@ const Dashboards = ({ match }) => (
   <Suspense fallback={<div className="loading" />}>
     <Switch>
       <Redirect exact from={`${match.url}/`} to={`${match.url}/default`} />
+
       <Route
         path={`${match.url}/atividade`}
         render={props => <Atividade {...props} />}
+      />
+      <Route
+        path={`${match.url}/listarAtividade`}
+        render={props => <ListarAtividade {...props} />}
       />
       <Route
         path={`${match.url}/default`}
@@ -42,7 +52,7 @@ const Dashboards = ({ match }) => (
         path={`${match.url}/analytics`}
         render={props => <AnalyticsDefault {...props} />}
       />
-      <Redirect to="/error" />
+      {/* <Redirect to="/error" /> */}
     </Switch>
   </Suspense>
 );

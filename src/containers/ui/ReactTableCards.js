@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
+
 import { Card, CardBody, CardTitle } from "reactstrap";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import ReactTable from "react-table";
@@ -7,6 +9,7 @@ import IntlMessages from "../../helpers/IntlMessages";
 import DataTablePagination from "../../components/DatatablePagination";
 
 import data from "../../data/products";
+import listarAtividade from "../../views/app/dashboards/listarAtividade";
 
 const CustomTbodyComponent = props => (
   <div {...props} className={classnames("rt-tbody", props.className || [])}>
@@ -18,28 +21,31 @@ const CustomTbodyComponent = props => (
 
 const dataTableColumns = [
   {
-    Header: "Name",
-    accessor: "title",
+    Header: "Nome da Atividade",
+    accessor: "nome",
     Cell: props => <p className="list-item-heading">{props.value}</p>
   },
   {
-    Header: "Sales",
-    accessor: "sales",
+    Header: "Enunciado",
+    accessor: "enunciado",
     Cell: props => <p className="text-muted">{props.value}</p>
   },
   {
-    Header: "Stock",
-    accessor: "stock",
+    Header: "Nota",
+    accessor: "nota",
     Cell: props => <p className="text-muted">{props.value}</p>
   },
   {
-    Header: "Category",
-    accessor: "category",
+    Header: "#",
+    accessor: "glyph-icon simple-icon-trash",
+    // <i className="glyph-icon simple-icon-trash" />
     Cell: props => <p className="text-muted">{props.value}</p>
   }
 ];
 
-export const ReactTableWithPaginationCard = props => {
+export const ReactTableWithPaginationCard = (props) => {
+  console.log('props', props)
+
   return (
     <Card className="mb-4">
       <CardBody>
@@ -47,18 +53,25 @@ export const ReactTableWithPaginationCard = props => {
           <IntlMessages id="table.react-pagination" />
         </CardTitle>
         <ReactTable
-          data={data}
+          // {...atividade.map((item, id)=>{
+          //     data={item}
+          //   })}
+            // data={atividade}
+          data={props.atividade}
           columns={dataTableColumns}
+          
           defaultPageSize={5}
           showPageJump={false}
           showPageSizeOptions={false}
           PaginationComponent={DataTablePagination}
           className={"react-table-fixed-height"}
         />
+        <i className="glyph-icon simple-icon-trash" />
       </CardBody>
     </Card>
   );
 };
+
 export const ReactTableWithScrollableCard = props => {
   return (
     <Card className="mb-4">
@@ -80,6 +93,7 @@ export const ReactTableWithScrollableCard = props => {
     </Card>
   );
 };
+
 export const ReactTableAdvancedCard = props => {
   return (
     <Card className="mb-4">
