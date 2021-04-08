@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 
-import { Card, CardBody, CardTitle } from "reactstrap";
+import { Button, Card, CardBody, CardTitle } from "reactstrap";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import ReactTable from "react-table";
 import classnames from "classnames";
@@ -43,6 +43,16 @@ const dataTableColumns = [
   }
 ];
 
+function deleteAtividade(atividade) {
+  // alert('Fui chamado')
+  console.log(atividade)
+  console.log(atividade.id)
+  let id = atividade.id
+  axios.delete(`http://localhost:3000/atividade/${id}`).then(response => {
+    console.log('Cadastro com id:' + id + 'excluida' )
+  })
+}
+
 export const ReactTableWithPaginationCard = (props) => {
   console.log('props', props)
 
@@ -53,12 +63,36 @@ export const ReactTableWithPaginationCard = (props) => {
           <IntlMessages id="table.react-pagination" />
         </CardTitle>
         <ReactTable
-          // {...atividade.map((item, id)=>{
-          //     data={item}
-          //   })}
-            // data={atividade}
           data={props.atividade}
-          columns={dataTableColumns}
+          columns={[
+            {
+              Header: "Nome da Atividade",
+              accessor: "nome",
+              Cell: props => <p className="list-item-heading">{props.value}</p>
+            },
+            {
+              Header: "Enunciado",
+              accessor: "enunciado",
+              Cell: props => <p className="text-muted">{props.value}</p>
+            },
+            {
+              Header: "Nota",
+              accessor: "nota",
+              Cell: props => <p className="text-muted">{props.value}</p>
+            },
+            {
+              Header: "#",
+              accessor: "glyph-icon simple-icon-trash",
+              Cell: props => <div>
+
+              <Button className="glyph-icon simple-icon-trash" onClick={ () => deleteAtividade(props.original)} ></Button>,
+
+              <Button className="simple-icon-pencil" href={`/app/dashboards/atividade/${props.original.id}`}></Button>
+              {/* <Button className="simple-icon-pencil" href="/"></Button> */}
+
+                </div>
+            }
+        ]}
           
           defaultPageSize={5}
           showPageJump={false}
@@ -66,7 +100,6 @@ export const ReactTableWithPaginationCard = (props) => {
           PaginationComponent={DataTablePagination}
           className={"react-table-fixed-height"}
         />
-        <i className="glyph-icon simple-icon-trash" />
       </CardBody>
     </Card>
   );

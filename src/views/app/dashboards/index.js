@@ -29,9 +29,16 @@ const Dashboards = ({ match }) => (
       <Redirect exact from={`${match.url}/`} to={`${match.url}/default`} />
 
       <Route
+        exact
         path={`${match.url}/atividade`}
         render={props => <Atividade {...props} />}
       />
+      <Route
+        exact
+        path={`${match.url}/atividade/:id`}
+        render={props => <Atividade {...props} />}
+      />
+
       <Route
         path={`${match.url}/listarAtividade`}
         render={props => <ListarAtividade {...props} />}

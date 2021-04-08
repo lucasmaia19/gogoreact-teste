@@ -16,12 +16,17 @@ const ListarAtividade = (props) => {
     const [atividade, setAtividade] = useState([]);
 
     useEffect(()=> {
-    
         axios.get('http://localhost:3000/atividade/').then(response => {
-            // console.log(response.data, 'response')
+            console.log(response.data, 'response')
             setAtividade(response.data)
+
+            // if(atividade.id) {
+            //   carregarAtividade(atividade)
+            // }
         })
     }, [])
+
+
 
         return (
 
@@ -40,44 +45,3 @@ const ListarAtividade = (props) => {
 
 }
 export default injectIntl(ListarAtividade);
-
-
-    // async function loadAtividades(){
-    //   await listRef.limit(5)
-    //   .get()
-    //   .then((snapshot) => {
-    //     updateState(snapshot)
-    //   })
-    //   .catch((err)=>{
-    //     console.log('Deu algum erro: ', err);
-    //     setLoadingMore(false);
-    //   })
-  
-    //   setLoading(false);
-  
-    // }
-
-    // loadAtividades();
-
-//     return () => {
-
-//     }
-//   }, []);
-
-// export default function listarAtividade() {
-//     return (
-
-        
-//            <Row>
-//              <Colxx xxs="12">
-//                <h3 className="mb-4">
-//                  <IntlMessages id="form-components.listarAtividade" />
-//                </h3>
-//              </Colxx>
-
-//              <Colxx xxs="12">
-//                <ReactTableWithPaginationCard />
-//              </Colxx>
-//            </Row> 
-//     );
-// }

@@ -1,5 +1,5 @@
 import { injectIntl } from "react-intl";
-import React, { Component, Fragment, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import {
     Card,
     CardBody,
@@ -8,33 +8,46 @@ import {
     Label,
     Button,
     Form,
-    Input
   } from "reactstrap";
   import { useForm } from 'react-hook-form';
-  import DatePicker from "react-datepicker";
   import "react-datepicker/dist/react-datepicker.css";
 
-  import Switch from "rc-switch";
   import axios from 'axios';
-//   import InputMask from 'react-input-mask';
 
 import IntlMessages from "../../../helpers/IntlMessages";
 import { Colxx } from "../../../components/common/CustomBootstrap";
-import listarAtividade from "./listarAtividade";
+import { useParams } from "react-router-dom";
 
+// export default function CreatePost() {
 const CreatePost = (props) => {
-    console.log('bateu aqui')
+    const { id } = useParams();
+    console.log('tem id', id)
+    
+    useEffect(() => {
+
+    }, [])
+
     const { register, handleSubmit } = useForm();
+
+        console.log('á um register')
+        async function loadId(id) {
+            axios.get(`http://localhost:3000/atividade/${id}`).then(response => {
+                handleSubmit(response)
+                console.log('atividade pelo id: ', response )
+              })
+          }
+
     const onSubmit = values => {
         console.log('data', values)
         axios.post('http://localhost:3000/atividade', values).then(result => {
-            props.history.push("/");
+            // props.history.push("/");
         })
     };
 
-        const [value, onChange] = useState(new Date());
 
-        const startDate = Date;
+        // const [value, onChange] = useState(new Date());
+
+        // const startDate = Date;
 
         return(
             <div>
@@ -45,7 +58,7 @@ const CreatePost = (props) => {
                                 <CardTitle>
                                     <IntlMessages id="form-components.cadastro-atividade" />
                                     </CardTitle>
-                                <Form className="dashboard-quick-post">
+                                {/* <Form className="dashboard-quick-post"> */}
                                 <FormGroup row>
                                         <Label sm="3">
                                             <IntlMessages id="form-components.nome" />
@@ -106,7 +119,7 @@ const CreatePost = (props) => {
                                     <Button className="float-right" color="primary" type="submit">
                                         <IntlMessages id="form-components.salvar" />
                                     </Button>    
-                                </Form>
+                                {/* </Form> */}
                             </CardBody>
                         </Card>
                         </Fragment>
