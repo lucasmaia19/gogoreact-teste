@@ -57,17 +57,18 @@ const CreatePost = (props) => {
     }, [])
 
 
-    // function onChange(evento) {
-        // const { atividade, value } = evento.target;
+    function onChange(evento) {
+        const { name, value } = evento.target;
 
-        // setValues({ ...values, [name]: value })
-    // }
+        setAtividade({ ...atividade, [name]: value })
+    }
 
     function onSubmit(evento) {
         evento.preventDefault();
 
         if(id){
-            axios.put(`http://localhost:3000/atividade/${id}`).then(response => {
+            console.log("id a ser atualizado", id)
+            axios.put(`http://localhost:3000/atividade/${id}`, atividade).then(response => {
                 console.log('snapshot', response)
             })
             return;
@@ -103,7 +104,8 @@ const CreatePost = (props) => {
                                             </Label>
                                             <Colxx sm="9">
                                             {/* <input type="text" className="form-control" name="nome" ref={register({ required: true })} /> */}
-                                            <input type="text" className="form-control" name="nome" value={atividade.nome} onChange={(e) => setAtividade(e.target.value)}/>
+                                            {/* <input type="text" className="form-control" name="nome" value={atividade.nome} onChange={(e) => atividade(e.target.value)}/> */}
+                                            <input type="text" className="form-control" name="nome" value={atividade.nome} onChange={onChange}/>
                                             {/* <input type="text" className="form-control" name="nome" value={atividade.nome} onChange={onChange}/> */}
                                             </Colxx>
                                     </FormGroup>
@@ -114,7 +116,8 @@ const CreatePost = (props) => {
                                             </Label>
                                             <Colxx sm="9">
                                             {/* <textarea name="enunciado" cols="30" rows="10" className="form-control" ref={register({ required: true })}></textarea> */}
-                                            <textarea name="enunciado" cols="30" rows="10" className="form-control" value={atividade.enunciado} onChange={(e) => setAtividade(e.target.value)}></textarea>
+                                            {/* <textarea name="enunciado" cols="30" rows="10" className="form-control" value={atividade.enunciado} onChange={(e) => atividade(e.target.value)}></textarea> */}
+                                            <textarea name="enunciado" cols="30" rows="10" className="form-control" value={atividade.enunciado} onChange={onChange}></textarea>
                                             {/* <textarea type="text" className="form-control" name="enunciado" onChange={onChange}/> */}
                                         </Colxx>
                                     </FormGroup>
@@ -135,7 +138,8 @@ const CreatePost = (props) => {
                                         <Colxx sm="2">
                                             {/* <input mask="9999/99/99" type="text" className="form-control" name="nota" ref={register({ required: true })} /> */}
                                             {/* <input mask="9999/99/99" type="text" className="form-control" name="nota" value={nota} onChange={(e) => setNota(e.target.value)} /> */}
-                                            <input type="text" className="form-control" name="nota" value={atividade.nota} onChange={(e) => setAtividade(e.target.value)}/>
+                                            {/* <input type="text" className="form-control" name="nota" value={atividade.nota} onChange={(e) => atividade(e.target.value)}/> */}
+                                            <input type="text" className="form-control" name="nota" value={atividade.nota} onChange={onChange}/>
                                         </Colxx>
                                     </FormGroup>
 
